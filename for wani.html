@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for beautiful girl</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Soft pink background */
+            background-color: #FCE4EC; /* A very light, soft pink */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 1.5rem;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flower-animation-container {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 2rem 0;
+            background-color: #FFF0F5; /* Slightly lighter pink for the animation area */
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            overflow: hidden; /* Ensure flowers don't spill out */
+            position: relative; /* For absolute positioning of flowers */
+            min-height: 300px; /* Minimum height for the animation */
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 0; /* Start very small */
+            opacity: 0;
+            transition: all 2s ease-out; /* Smooth growth */
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5); /* Pink glow for emoji */
+            line-height: 1; /* Prevent extra space around emoji */
+            display: flex; /* To center the emoji if needed */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animation class to make flowers grow */
+        .flower-grow {
+            font-size: 80px; /* Final size for emoji */
+            opacity: 1;
+        }
+
+        /* Media queries for responsiveness */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 80%;
+            }
+            .flower-grow {
+                font-size: 120px; /* Larger size for emoji on tablet */
+            }
+            /* Adjust main content layout for larger screens */
+            .main-content-grid {
+                display: grid;
+                grid-template-columns: 1fr 2fr; /* Note on left (1 part), image/caption on right (2 parts) */
+                gap: 2rem; /* Space between columns */
+                align-items: start; /* Align items to the top */
+            }
+            .image-section {
+                text-align: center; /* Center image and button */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 70%;
+            }
+            .flower-grow {
+                font-size: 150px; /* Even larger size for emoji on desktop */
+            }
+            .main-content-grid {
+                grid-template-columns: 1fr 2fr; /* Maintain 1:2 ratio */
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-pink-300 p-6 shadow-lg rounded-b-2xl">
+        <h1 class="text-4xl font-bold text-white text-center tracking-wide">FOR WANI</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-4xl main-content-grid">
+            <!-- Note Section (Left Side) -->
+            <div class="note-section bg-pink-50 p-6 rounded-xl shadow-inner text-left mb-6 md:mb-0">
+                <h3 class="text-2xl font-bold text-pink-700 mb-4">BEFORE YOU CLICK THE BUTTON, YOU MAY ASK WHY THIS PICTURE RIGHT? HERE THE EXPLANATION</h3>
+                <p class="text-lg text-pink-800 leading-relaxed">
+                    Peonies are soft, graceful flowers that symbolize gentle beauty, kindness, and quiet admiration just like you. With their full, delicate petals and romantic feel, peonies perfectly reflect you're sweet, clever, and creative nature, making you an ideal symbol whore are so effortlessly charming.
+                </p>
+            </div>
+
+            <!-- Image, Caption, and Button Section (Right Side) -->
+            <div class="image-section flex flex-col items-center">
+                <!-- Image -->
+                <!-- You can replace the src with your .jpg, .png, or .webp image URL -->
+                <img src="POENY.jpg"
+                     alt="Beautiful Landscape"
+                     class="w-full h-auto rounded-xl shadow-md mb-6 border-4 border-pink-200"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFC0CB/FFFFFF?text=Image+Not+Found+(JPG/PNG/WebP)';">
+
+                <!-- Caption -->
+                <p class="text-xl text-pink-700 mb-8 font-semibold">
+                    "to be honest, im not to be hero from your situation with your boyfriend. just want to share some happiness to you, everyone deserve happy instead of sad. so this is some of present? i think just to make you smile back. and one of the reason why i put poeny flowers is because i dont have any of your photo thennn just flowerslah because it suitable with you. feel free to click the button below to have some surprise to you!"
+                </p>
+
+                <!-- Button -->
+                <button id="revealButton"
+                        class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300">
+                    click here pretty girl
+                </button>
+            </div>
+        </div>
+
+        <!-- Hidden Section for Flowers -->
+        <div id="flowerSection" class="flower-animation-container">
+            <h2 class="text-3xl font-bold text-pink-700 mb-6">flowers, beauty as you</h2>
+            <div id="flowerCanvas" class="relative w-full h-64 md:h-80 lg:h-96 flex items-center justify-center overflow-hidden">
+                <!-- Flowers will be injected here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Hidden Audio Element for Autoplay -->
+        <!-- The 'hidden' class ensures it doesn't take up space or show controls -->
+        <!-- The src should be an .mp3 file URL -->
+        <audio id="myAudio" src="windflower.mp3" class="hidden" loop></audio>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealButton = document.getElementById('revealButton');
+            const flowerSection = document.getElementById('flowerSection');
+            const flowerCanvas = document.getElementById('flowerCanvas');
+            const myAudio = document.getElementById('myAudio');
+            // songUrlInput is no longer needed as the customization form is removed.
+            // const songUrlInput = document.getElementById('songUrl');
+
+            // Function to generate a random position for a flower within the canvas
+            function getRandomPosition(element) {
+                const rect = element.getBoundingClientRect();
+                // Adjusting bounds to ensure flowers appear fully within the visible area
+                const padding = 70; // Roughly half the max flower size
+                const x = Math.random() * (rect.width - 2 * padding) + padding;
+                const y = Math.random() * (rect.height - 2 * padding) + padding;
+                return { x, y };
+            }
+
+            // Function to create and animate a single flower
+            function createFlower() {
+                const flower = document.createElement('div');
+                // Using a more universally supported set of flower emojis for variety
+                // These emojis are generally well-supported across most modern platforms.
+                const flowerEmojis = ['🌷', '🌹', '🌻', '🌼', '🌸']; // Simpler, more common flower emojis
+                const randomFlowerEmoji = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+
+                flower.classList.add('flower');
+                flower.innerHTML = randomFlowerEmoji; // Set the emoji as content
+                flowerCanvas.appendChild(flower);
+
+                // Set initial random position
+                const { x, y } = getRandomPosition(flowerCanvas);
+                flower.style.left = `${x}px`;
+                flower.style.top = `${y}px`;
+
+                // Trigger growth after a short delay to allow CSS transition
+                setTimeout(() => {
+                    flower.classList.add('flower-grow');
+                }, 50); // Small delay
+
+                // Remove flower after animation to keep DOM clean (optional)
+                setTimeout(() => {
+                    if (flower.parentNode) {
+                        flower.parentNode.removeChild(flower);
+                    }
+                }, 4000); // Remove after 4 seconds (2s growth + 2s buffer)
+            }
+
+            // Function to continuously grow flowers
+            let flowerInterval;
+            function startFlowerAnimation() {
+                // Clear any existing interval to prevent multiple animations running
+                stopFlowerAnimation();
+                flowerInterval = setInterval(createFlower, 500); // Create a new flower every 0.5 seconds
+            }
+
+            // Function to stop flower animation
+            function stopFlowerAnimation() {
+                clearInterval(flowerInterval);
+            }
+
+            // Event listener for the button click
+            revealButton.addEventListener('click', () => {
+                flowerSection.style.display = 'flex'; // Show the flower animation section
+                myAudio.play().catch(error => {
+                    console.error("Audio playback failed:", error);
+                    // Display a user-friendly message if autoplay is blocked
+                    const messageBox = document.createElement('div');
+                    messageBox.className = 'fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative shadow-lg z-50';
+                    messageBox.innerHTML = '<strong>Oops!</strong> Audio playback requires user interaction or browser settings. Please ensure your browser allows autoplay.';
+                    document.body.appendChild(messageBox);
+                    setTimeout(() => messageBox.remove(), 5000); // Remove after 5 seconds
+                });
+                startFlowerAnimation(); // Start the flower animation
+            });
+
+            // The song URL input and its event listener are removed as per your request.
+            // songUrlInput.addEventListener('input', () => { ... });
+        });
+    </script>
+</body>
+</html>
